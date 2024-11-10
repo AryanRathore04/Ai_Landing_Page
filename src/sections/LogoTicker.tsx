@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image';  // Import Image from next/image
 import acmeLogo from "@/assets/logo-acme.png";
 import apexLogo from "@/assets/logo-apex.png";
 import celestialLogo from "@/assets/logo-celestial.png";
@@ -8,11 +9,9 @@ import pulseLogo from "@/assets/logo-pulse.png";
 import echoLogo from "@/assets/logo-echo.png";
 import { motion } from "framer-motion";
 
-
 export const LogoTicker = () => {
   return (
-    <section className="py-20 md:py-24
-    ">
+    <section className="py-20 md:py-24">
       <div className="container">
         <div className="flex items-center gap-5">
           <div className="flex-1 md:flex-none">
@@ -20,14 +19,15 @@ export const LogoTicker = () => {
           </div>
           <div className="flex flex-1 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_20%,black_80%,transparent)]">
             <motion.div
-            initial={{ translateX: "-50%" }}
-            animate={{ translateX: "0" }}
-            transition={{
-              repeat: Infinity,
-              duration: 30,
-              ease: "linear",
-            }}
-            className="flex flex-none gap-14 pr-14 -translate-x-1/2">
+              initial={{ translateX: "-50%" }}
+              animate={{ translateX: "0" }}
+              transition={{
+                repeat: Infinity,
+                duration: 30,
+                ease: "linear",
+              }}
+              className="flex flex-none gap-14 pr-14 -translate-x-1/2"
+            >
               {[
                 acmeLogo,
                 apexLogo,
@@ -41,11 +41,13 @@ export const LogoTicker = () => {
                 quantumLogo,
                 pulseLogo,
                 echoLogo,
-              ].map((logo) => (
-                <img
+              ].map((logo, index) => (
+                <Image
                   src={logo.src}
-                  key={logo.src}
-                  alt=""
+                  key={index}
+                  alt="Company logo"
+                  height={24}  // Specify the height
+                  width={logo.width}  // Or specify a width if known
                   className="h-6 w-auto"
                 />
               ))}
